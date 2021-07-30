@@ -1,6 +1,9 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <h2>Go away for the weekend!</h2>
+  <p>Here you'll be able to discover amazing places to stay at, in the most remote locations in the world!</p>
+  <%= link_to "Create flat", "#", class: "btn btn-primary"  %>
 
-<% if user_signed_in?  %>
-  <%= current_user.email %>
-<% end %>
+  <% if user_signed_in?  %>
+    <%= current_user.email %>
+  <% end %>
+</div>
