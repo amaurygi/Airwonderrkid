@@ -1,5 +1,11 @@
 <h1> All Properties </h1>
 
-<% @properties.each do |property| %>
-  <%= link_to property.name, property_path(property) %>
-<% end %>
+<div class="page">
+  <div class="cards">
+      <% @properties.each do |property| %>
+        <div class="card">
+          <%= link_to property.name, property_path(property) %>
+        </div>
+      <% end %>
+  </div>
+</div>
