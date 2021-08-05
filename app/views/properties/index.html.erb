@@ -4,7 +4,11 @@
   <div class="cards">
       <% @properties.each do |property| %>
         <div class="card">
-          <%= link_to property.name, property_path(property) %>
+          <p>
+            <%= link_to property.name, property_path(property), class: 'btn btn-flat' %> ||
+            <%= link_to "edit", edit_property_path(property), class: 'btn btn-primary' %> ||
+            <%= link_to "delete", property_path(property), method: :delete, class: 'btn btn-primary' %>
+          </p>        
         </div>
       <% end %>
   </div>
