@@ -5,3 +5,25 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+Property.destroy_all
+User.destroy_all
+
+user1 = User.create(email: 'test@mail.com', password: '123123')
+user2 = User.create(email: 'test2@mail.com', password: '123456')
+
+
+
+puts 'Creating 10 fake flats...'
+10.times do
+  flat = Property.new(
+    name: Faker::TvShows::BigBangTheory.character,
+    address: "#{Faker::Address.street_address}, #{Faker::Address.city}",
+    price:  rand(300..1000),
+    user: User.all.sample,
+    description: Faker::TvShows::BigBangTheory.quote
+  )
+  flat.save!
+end
+puts 'Finished!'
