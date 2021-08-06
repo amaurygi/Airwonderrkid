@@ -2,3 +2,4 @@
 
 <p><%= @property.name %> <%= @property.address %> <%= @property.price  %></p>
 <p><%= link_to 'go back', properties_path %></p>
+<%= link_to 'Book', new_property_booking_path(@property) %>

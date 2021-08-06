@@ -1,0 +1,8 @@
+<h1>Change your reservation</h1>
+
+<%= simple_form_for [@property, @booking] do |f| %>
+    <%= f.input :check_in %>
+    <%= f.input :check_out %>
+    <%= f.association :property %>
+    <%= f.submit "Submit dates", class: "btn btn-primary" %>
+<% end %>
