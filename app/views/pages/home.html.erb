@@ -1,9 +1,13 @@
 <div class="container">
   <h1>Go away for the weekend!</h1>
   <p>Here you'll be able to discover amazing places to stay at, in the most remote locations in the world!</p>
-  <%= link_to "Create flat", "#", class: "btn btn-primary"  %>
-
+  <div class="btns-show">
+    <div class="btn-show"><%= link_to 'Discover our properties', properties_path, class: 'btn btn-primary' %></div>
+    <div class="btn-show"><%= link_to "Create flat", "#", class: "btn btn-primary"  %></div>
+  </div>
+<p>
   <% if user_signed_in?  %>
     <%= current_user.email %>
   <% end %>
+</p>
 </div>
