@@ -53,6 +53,6 @@ class PropertiesController < ApplicationController
   end
 
   def property_params
-    params.require(:property).permit(:name,:address,:description,:price)
+    params.require(:property).permit(:name,:address,:description,:price, photos: [])
   end
 end

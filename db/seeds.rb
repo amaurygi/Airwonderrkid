@@ -15,8 +15,6 @@ user1 = User.create(email: 'test@mail.com', password: '123123')
 user2 = User.create(email: 'test2@mail.com', password: '123456')
 cities = ['Paris', 'Brussels', 'Podgorica', 'Rome', 'Madrid', 'Amsterdam']
 
-
-
 puts 'Creating 10 fake flats...'
 10.times do
   flat = Property.new(
