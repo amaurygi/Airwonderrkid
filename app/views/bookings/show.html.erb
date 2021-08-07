@@ -1,0 +1,20 @@
+<h1>Booking details</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6 m-auto">
+      <p>You have booked <%= @booking.property.name %> from <%= @booking.check_in %> to <%= @booking.check_out %></p>
+      <p> Price: <%= @booking.property.price * (@booking.check_out - @booking.check_in).to_i %> € </p>
+      <p>Being: <%= (@booking.check_out - @booking.check_in).to_i %> day(s) at <%= @booking.property.price %> per day</p> 
+      <h4>Description</h4>
+      <%= @booking.property.description %>
+      <hr>
+      <h4>Address</h4>
+      <%= @booking.property.address %>
+      <hr>
+      <%= link_to "My List", booking_list_path, class: 'btn btn-primary' %>
+      <%= link_to "Change your reservation", edit_booking_path(@booking), class: 'btn btn-secondary' %>
+      <%= link_to "Cancel", booking_path, class: 'btn btn-danger',method: :delete, data: { confirm: "Are you sure?" } %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<h1> Hello <%= current_user.email %> ! </h1>
+<h2>Choose your dates for booking <%= @property.name %> Mansion</h2>
+<hr>
+
+<%= simple_form_for [@property, @booking] do |f| %>
+    <%= f.input :check_in %>
+    <%= f.input :check_out %>
+    <%= f.submit "Submit dates", class: "btn btn-primary" %>
+<% end %>
+  
