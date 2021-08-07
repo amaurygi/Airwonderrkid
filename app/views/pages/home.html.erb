@@ -1,13 +1,18 @@
 <div class="container">
   <h1>Go away for the weekend!</h1>
   <p>Here you'll be able to discover amazing places to stay at, in the most remote locations in the world!</p>
-  <div class="btns-show">
-    <div class="btn-show"><%= link_to 'Discover our properties', properties_path, class: 'btn btn-primary' %></div>
-    <div class="btn-show"><%= link_to "Create flat", "#", class: "btn btn-primary"  %></div>
+  
+  <p>
+    <div class="btns-show">
+      <div class="btn-show"><%= link_to 'Discover our properties', properties_path, class: 'btn btn-primary' %></div>
+      <div class="btn-show"><%= link_to "Create flat", "/properties/new", class: "btn btn-primary"  %></div>
+    </div>
+  <img src="https://res.cloudinary.com/dzc11fywj/image/upload/v1628342565/4-2_mnylp0.jpg" alt="Baller Flat">
+    
+  </p>
   </div>
-<p>
-  <% if user_signed_in?  %>
-    <%= current_user.email %>
-  <% end %>
-</p>
-</div>
+  <br>
+    <% if user_signed_in?  %>
+      <%= current_user.email %>
+    <% end %>
+  </p>
