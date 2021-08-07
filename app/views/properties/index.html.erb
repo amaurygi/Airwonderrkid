@@ -1,5 +1,15 @@
 <h1> All Properties </h1>
 
-<% @properties.each do |property| %>
-  <%= link_to property.name, property_path(property) %>
-<% end %>
+<div class="page">
+  <div class="cards">
+      <% @properties.each do |property| %>
+        <div class="card">
+          <p>
+            <%= link_to property.name, property_path(property), class: 'btn btn-flat' %> ||
+            <%= link_to "edit", edit_property_path(property), class: 'btn btn-primary' %> ||
+            <%= link_to "delete", property_path(property), method: :delete, class: 'btn btn-primary' %>
+          </p>        
+        </div>
+      <% end %>
+  </div>
+</div>
