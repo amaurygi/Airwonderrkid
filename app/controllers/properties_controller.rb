@@ -33,11 +33,12 @@ class PropertiesController < ApplicationController
   end
 
   def update
-    if @property.update(property_params)
-      @property.user = current_user
+    if @property.user == current_user
+      @property.update(property_params)
       redirect_to property_path(@property)
     else
-      render :edit
+      flash[:alert] = "You are not the owner of this property!"
+      render :action => :new
     end
   end
 
