@@ -5,9 +5,13 @@
       <% @properties.each do |property| %>
         <div class="card">
           <p>
-            <%= link_to property.name, property_path(property), class: 'btn btn-flat' %> ||
-            <%= link_to "edit", edit_property_path(property), class: 'btn btn-primary' %> ||
-            <%= link_to "delete", property_path(property), method: :delete, class: 'btn btn-primary' %>
+            <%= link_to property.name, property_path(property), class: 'btn btn-flat' %>
+              <% if property.user == current_user %>
+                <div class="btn-show"><%= link_to 'Edit', edit_property_path(property), class: 'btn btn-primary' %></div>
+              <% end %>
+              <% if property.user == current_user %>
+                <%= link_to "delete", property_path(property), method: :delete, class: 'btn btn-primary' %>
+              <% end %>
           </p>
         </div>
       <% end %>
