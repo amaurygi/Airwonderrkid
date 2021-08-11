@@ -1,6 +1,8 @@
 <h1> Property </h1>
 
-<p><%= @property.name %> <%= @property.address %> <%= @property.price  %><%= @property.user.email %></p>
+<p><%= @property.name %> <%= @property.address %> <%= @property.price  %> €. %></p>
+<p>Landlord: <%= @property.user.email %></p>
+  <%= link_to "See all owner's properties", user_path(@property.user)  %>
 <p><% @property.photos.each do |photo| %>
   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
 <% end %>
