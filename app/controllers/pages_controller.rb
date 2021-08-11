@@ -6,4 +6,5 @@ class PagesController < ApplicationController
 
   def my_bookings
   end
+
 end
