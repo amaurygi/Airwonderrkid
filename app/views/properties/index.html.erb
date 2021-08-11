@@ -1,18 +1,37 @@
-<h1> All Properties </h1>
+<h1> Search our properties </h1>
+<p> Use search or geolocation to find your next destination</p>
+<%= form_tag properties_path, method: :get do %>
+  <div class="search-form-control form-group">
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a property"
+  %>
+  <%= submit_tag "Search", class: "btn btn-success" %>
+  </div>
+<% end %>
+
 
 <div class="page">
   <div class="cards">
       <% @properties.each do |property| %>
-        <div class="card">
-          <p>
-            <%= link_to property.name, property_path(property), class: 'btn btn-flat' %>
-              <% if property.user == current_user %>
-                <div class="btn-show"><%= link_to 'Edit', edit_property_path(property), class: 'btn btn-primary' %></div>
-              <% end %>
-              <% if property.user == current_user %>
-                <%= link_to "delete", property_path(property), method: :delete, class: 'btn btn-primary' %>
-              <% end %>
-          </p>
+        <div class="card-product mt-2">
+            <% property.photos.each do |photo| %>
+              <%= cl_image_tag photo.key %>
+            <% end %>
+            <div class="card-product-infos">
+              <h2><%= link_to property.name, property_path(property), class: 'btn btn-flat' %></h2>
+              <p><%= property.address %></p>
+                <div class="buttons">
+                  <p><% if property.user == current_user %>
+                      <a class="btn-show"><%= link_to 'Edit', edit_property_path(property), class: 'btn btn-primary' %></a>
+                    <% end %>
+                    <% if property.user == current_user %>
+                      <a class="btn-show"><%= link_to "delete", property_path(property), method: :delete, class: 'btn btn-primary' %></a>
+                    <% end %>
+                  </p>
+                </div>
+            </div>
         </div>
       <% end %>
   </div>
