@@ -14,15 +14,27 @@ User.destroy_all
 user1 = User.create(email: 'test@mail.com', password: '123123')
 user2 = User.create(email: 'test2@mail.com', password: '123456')
 cities = ['Paris', 'Brussels', 'Podgorica', 'Rome', 'Madrid', 'Amsterdam']
+property_name = [
+  'La Fajolle', 
+  'La Renardière', 
+  'Duinhofje', 
+  'La Madrague', 
+  'Coconut', 
+  'Safari Dream', 
+  "Villa d'Este", 
+  'Moulin Rouge', 
+  "Angel's Bay", 
+  'Stormy Place']
+
 
 puts 'Creating 10 fake flats...'
 10.times do
   flat = Property.new(
-    name: Faker::TvShows::BigBangTheory.character,
+    name: property_name.sample,
     address: cities.sample,
     price:  rand(300..1000),
     user: User.all.sample,
-    description: Faker::TvShows::BigBangTheory.quote
+    description: Faker::TvShows::BigBangTheory.quote,
   )
   flat.save!
 end

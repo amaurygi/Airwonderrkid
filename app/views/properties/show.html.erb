@@ -3,8 +3,9 @@
 <p><%= @property.name %></p>
 <p><%= @property.address %></p>
 <p><%= @property.description %></p>
-<p><%= @property.price %></p>
-<%= @property.user.email %></p>
+<p><%= @property.price %> €.</p>
+<p>Landlord: <%= @property.user.email %></p>
+  <%= link_to "See all owner's properties", user_path(@property.user)  %>
 <p><% @property.photos.each do |photo| %>
   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
 <% end %>
