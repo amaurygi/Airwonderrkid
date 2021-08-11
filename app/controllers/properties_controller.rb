@@ -47,6 +47,14 @@ class PropertiesController < ApplicationController
     redirect_to properties_path
   end
 
+  def index
+    if params[:query].present?
+      sql_query = "name ILIKE :query OR address ILIKE :query"
+      @properties = Property.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @properties = Property.all
+    end
+  end
 
   private
 
