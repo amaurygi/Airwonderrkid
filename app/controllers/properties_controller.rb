@@ -2,12 +2,14 @@ class PropertiesController < ApplicationController
   before_action :find_property, only: [:show, :edit, :update, :destroy]
 
   def index
+
     if params[:query].present?
       sql_query = "name ILIKE :query OR address ILIKE :query"
       @properties = Property.where(sql_query, query: "%#{params[:query]}%")
     else
       @properties = Property.all
     end
+
     @markers = @properties.geocoded.map do |property|
       {
         lat: property.latitude,
