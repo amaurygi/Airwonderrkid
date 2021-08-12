@@ -2,6 +2,7 @@ class PropertiesController < ApplicationController
   before_action :find_property, only: [:show, :edit, :update, :destroy]
 
   def index
+    binding.pry
     @properties = Property.all
     @markers = @properties.geocoded.map do |property|
       {
