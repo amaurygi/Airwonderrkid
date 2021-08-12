@@ -2,8 +2,14 @@ class PropertiesController < ApplicationController
   before_action :find_property, only: [:show, :edit, :update, :destroy]
 
   def index
-    binding.pry
-    @properties = Property.all
+
+    if params[:query].present?
+      sql_query = "name ILIKE :query OR address ILIKE :query"
+      @properties = Property.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @properties = Property.all
+    end
+
     @markers = @properties.geocoded.map do |property|
       {
         lat: property.latitude,
@@ -46,15 +52,6 @@ class PropertiesController < ApplicationController
   def destroy
     @property.delete
     redirect_to properties_path
-  end
-
-  def index
-    if params[:query].present?
-      sql_query = "name ILIKE :query OR address ILIKE :query"
-      @properties = Property.where(sql_query, query: "%#{params[:query]}%")
-    else
-      @properties = Property.all
-    end
   end
 
   private
