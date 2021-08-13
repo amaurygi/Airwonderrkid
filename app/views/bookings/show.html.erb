@@ -3,18 +3,26 @@
 <div class="container">
   <div class="row">
     <div class="col-6 m-auto">
-      <p>You have booked <%= @booking.property.name %> from <%= @booking.check_in %> to <%= @booking.check_out %></p>
+      <p>You have booked <%= @booking.property.name %> from:</p>
+      <p> <strong><%= @booking.check_in %></strong> to <strong><%= @booking.check_out %></strong></p>
       <p> Price: <%= @booking.property.price * (@booking.check_out - @booking.check_in).to_i %> € </p>
       <p>Being: <%= (@booking.check_out - @booking.check_in).to_i %> day(s) at <%= @booking.property.price %> per day</p> 
       <h4>Description</h4>
       <%= @booking.property.description %>
       <hr>
       <h4>Address</h4>
-      <%= @booking.property.address %>
+      <%= @booking.property.address %> - contact: <%= @booking.property.user.email %>
       <hr>
       <%= link_to "My List", booking_list_path, class: 'btn btn-primary' %>
-      <%= link_to "Change your reservation", edit_booking_path(@booking), class: 'btn btn-secondary' %>
+      <%= link_to "Change", edit_booking_path(@booking), class: 'btn btn-secondary' %>
       <%= link_to "Cancel", booking_path, class: 'btn btn-danger',method: :delete, data: { confirm: "Are you sure?" } %>
     </div>
   </div>
 </div>
+  <hr>
+  
+  <div class="d-flex justify-content-between align-item-center p-4">
+    <% @booking.property.photos.each do |photo| %>
+      <p><%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %></p>
+    <% end %>
+  </div>
