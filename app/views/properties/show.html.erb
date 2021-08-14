@@ -49,14 +49,10 @@
   <% else %>
     <% @property.reviews.each do |review| %>
       <p id="review-<%= review.id %>">
-      <%= review.rating.to_i.times do %>
-        <span class='glyphicon glyphicon-star'></span>
+      <% review.rating.to_i.times do %>
+        <span>⭐</span>
       <% end %>
       <%= review.content %></p>
     <% end %>
   <% end %>
-<<<<<<< HEAD
 </div>
-=======
-</ul>
->>>>>>> master
