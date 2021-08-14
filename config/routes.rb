@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get "my_bookings", to: "pages#my_bookings",  as: :booking_list
   resources :properties do
     resources :bookings, only: [:new, :create]
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: :create
   end
   resources :bookings, only: [ :show, :edit, :update, :destroy ]
   resources :users
