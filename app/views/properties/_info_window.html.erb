@@ -1,2 +1,7 @@
-<h2><%= property.name %></h2>
-<p><%= property.address %></p>
+
+<div class="map">
+  <h2><%= property.name %></h2>
+  <p><%= property.address %></p>
+  <p><%= link_to "More Details", property_path(property), class: 'btn btn-flat' %></p>
+  <p><%= cl_image_tag property.photos.first&.key, height: 200, width: 200 %></p>
+</div>

@@ -7,7 +7,12 @@ before_action :set_booking, only: [:show, :edit, :update, :destroy]
   end
 
   def show
-    @booking.user = current_user
+    @booking_marker = @booking.property.geocode
+    @markers = [{
+        lat: @booking_marker.first,
+        lng: @booking_marker.last,
+        info_window: render_to_string(partial: "info_window", locals: { property: @booking.property })
+      }]
   end
 
   def create
