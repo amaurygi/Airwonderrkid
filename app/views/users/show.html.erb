@@ -4,16 +4,14 @@
   <div class="cards">
     <% @user.properties.each do |p| %>
       <div class="card-product mt-2">
-        <% p.photos.each do |photo| %>
-          <%= cl_image_tag photo.key %>
-        <% end %>
-        <div class="card-product-infos">
-          <h6><%= p.name %></h6> 
-          <p> At only <%= p.price %> €/week! </p>
-          <p><%= ["Don't miss it!", 'Go wild!', 'What a bargain!', "You'll never forget it!"].sample %></p>
-            <div class="buttons">
-              <a class="btn-show"><%= link_to 'See details', property_path(p), class: 'btn btn-primary' %></a>
-              <% if p.user != current_user %>
+          <%= cl_image_tag p.photos.first&.key %>
+          <div class="card-product-infos">
+            <h6><%= p.name %></h6> 
+            <p> At only <%= p.price %> €/week! </p>
+            <p><%= ["Don't miss it!", 'Go wild!', 'What a bargain!', "You'll never forget it!"].sample %></p>
+              <div class="buttons">
+                <a class="btn-show"><%= link_to 'See details', property_path(p), class: 'btn btn-primary' %></a>
+                <% if p.user != current_user %>
                 <a class="btn-show"><%= link_to 'Book', new_property_booking_path(p), class: 'btn btn-primary' %></a>
               <% end %>
             </div>
