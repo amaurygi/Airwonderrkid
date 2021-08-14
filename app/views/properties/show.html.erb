@@ -4,7 +4,6 @@
 <p><%= @property.address %></p>
 <p><%= @property.description %></p>
 <p><%= @property.price %> €</p>
-<p><%= link_to 'Leave a review', new_property_review_path(@property) %></p>
 <p>Landlord: <%= @property.user.email %> --
   <%= link_to "See all owner's properties", user_path(@property.user)  %>
   </p>
@@ -14,7 +13,7 @@
 </p>
 <div class="btns-show">
   <% if @property.user != current_user %>
-    <div class="btn-show"><%= link_to 'Book', new_property_booking_path(@property), class: 'btn btn-success'%></div>
+  <div class="btn-show"><%= link_to 'Book', new_property_booking_path(@property), class: 'btn btn-success'%></div>
   <% end %>
 
   <% if @property.user == current_user %>
@@ -27,8 +26,37 @@
   <% end %>
 
 </div>
-<ul class="list-group">
-  <% @property.reviews.each do |review| %>
-    <li class="list-group-item"><%= review.content %></li>
+<br>
+<br>
+<br>
+<div>
+<h2>
+  <%= pluralize @property.reviews.size, "review" %>
+</h2>
+
+<%= simple_form_for([ @property, @review ], remote: true) do |f| %>
+  <%= f.input :content %>
+  <%= f.input :rating %>
+  <div class='btn btn-secondary' style='FFFFFF'>
+  <%= f.button :submit %>
+  </div>
+<% end %>
+</div>
+
+<div id="reviews">
+  <% if @property.reviews.blank? %>
+    Be the first to leave a review for <%= @property.name %>
+  <% else %>
+    <% @property.reviews.each do |review| %>
+      <p id="review-<%= review.id %>">
+      <%= review.rating.to_i.times do %>
+        <span class='glyphicon glyphicon-star'></span>
+      <% end %>
+      <%= review.content %></p>
+    <% end %>
   <% end %>
+<<<<<<< HEAD
+</div>
+=======
 </ul>
+>>>>>>> master
