@@ -13,9 +13,10 @@
 
 
 <div class="page">
+
   <div class="cards">
       <% @properties.each do |property| %>
-        <div class="card-product mt-2">
+        <div class="card-product">
             <%= cl_image_tag property.photos.first&.key %>
             <div class="card-product-infos">
               <h2><%= link_to property.name, property_path(property), class: 'btn btn-flat' %></h2>
@@ -33,10 +34,12 @@
         </div>
       <% end %>
   </div>
-</div>
 
-  <div id="map"
-     style="width: 100%; height: 600px;"
+  <div class="map"
+      id="map"
+     style="width: 50%; height: 1000px;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
+</div>
+
